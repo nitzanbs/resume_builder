@@ -1,12 +1,48 @@
 .row1{
     display: flex;
-    flex-direction: column;
+    height: 35rem;
+    padding: 2%;
+    justify-content: space-around
+}
+.homeHeadLine{
+    font-size: 30px;
+    font-weight: 900;
+    margin-right: 7rem;
+}
+
+.homeImg{
+    width: 40rem;
+    height: 30rem;
 }
 
 .row2{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 35rem;
+    padding: 2%;
+
+
+}
+
+.row3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 35rem;
+    padding: 2%;
+
+
+}
+
+.row4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40rem;
+    padding: 2%;
+    justify-content: center;
+
 
 }
 

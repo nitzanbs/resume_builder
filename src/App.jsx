@@ -10,6 +10,7 @@ import Navbar from './component/navbar/NavBar';
 import NotFound  from './pages/NotFound'
 import Home from './pages/home/Home'
 import Resume from './pages/resume/Resume'
+import MyResume from './pages/myResume/MyResume';
 
 
 
@@ -44,6 +45,15 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/MyResume"
+              element={
+                <MyResume
+
+                />
+              }
+            />
+            
             <Route
               path="/SignIn"
               element={
@@ -91,6 +101,15 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/MyResume"
+              element={
+                <MyResume
+
+                />
+              }
+            />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         )}

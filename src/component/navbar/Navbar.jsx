@@ -24,6 +24,9 @@ function Navbar() {
 
       <Link className='pNav' to="/Resume">Resume</Link>
 
+      <Link className='pNav' to="/MyResume">My Resume</Link>
+
+
 {user && (
   <div>
     {}

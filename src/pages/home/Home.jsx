@@ -1,21 +1,30 @@
 import React from 'react'
 import "./Home.css"
+import Testimonies from '../../component/testimonies/Testimonies'
+
+
+
 
 export default function Home() {
   return (
     <>
 
       <div className='row1'>
+        <div>
     <h1>Create <br /> 
     your winning resume <br /> 
     in just 15 minutes</h1>
 
     <button>BUILS MY RESUME</button>
     </div>
+    <div>
+      <img className='homeImg' src="https://thehubbackend.com/media/job-search.jpg" alt="" />
+    </div>
+    </div>
 
 
     <div className='row2'>
-      <h2>Get your professional resume in 3 steps</h2>
+      <h2 className='homeHeadLine'>Get your professional resume in 3 steps</h2>
 
         <div className='boxRow2'>
 
@@ -37,6 +46,15 @@ export default function Home() {
       </div>
 
       <button>CREATE MY RESUME</button>
+
+      <div className='row3'>
+        <Testimonies/>
+
+      </div>
+
+      <div className='row4'>
+
+      </div>
 
 
 

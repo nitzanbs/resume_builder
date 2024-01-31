@@ -1,0 +1,18 @@
+.box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tCard{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.img{
+    width: 10rem;
+    height: 10rem;
+
+}

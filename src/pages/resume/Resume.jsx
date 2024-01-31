@@ -3,34 +3,25 @@ import { getDocs, collection, query, where, addDoc } from "firebase/firestore";
 import { db } from '../../config/Config';
 import { UserContext } from '../../context/UserProvider';
 import PersonalInfo from '../../component/PersonalInfo';
-// import WorkExperience from '../../component/WorkExperience';
-// import Education from '../../component/Education';
+import WorkExperience from '../../component/WorkExperience';
+import Education from '../../component/Education';
+import '../../component/Form.css'
+
 
 export default function Resume() {
   const { user, setUser } = useContext(UserContext);
-  const [resume, setResume] = useState([]);
   const [resumeCard, setResumeCard] = useState({});
+  const [personalInfo, setPersonalInfo] = useState({});
+  const [workExperience, setWorkExperience] = useState({});
+  const [education, setEducation] = useState({});
+
+
   const [ErrMsg, setErrMsg] = useState("");
   const [addedResumeCardIds, setAddedResumeCardIds] = useState([]);
   const resumeCollectionRef = collection(db, 'Resume');
 
-  const getResume = async () => {
-    try {
-      if (!user) {
-        return;
-      }
-      const q = query(resumeCollectionRef, where("user", "==", user.uid));
-      const rowDocs = await getDocs(q);
-      const docs = rowDocs.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
-      setResume(docs);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
-  useEffect(() => {
-    getResume();
-  }, [user]);
+
 
   const changeHandler = (e) => {
     setResumeCard((prevData) => ({ ...prevData, ...{ [e.target.name]: e.target.value } }));
@@ -39,34 +30,52 @@ export default function Resume() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      const resumeCardData = {
+        personalInfo,
+        workExperience,
+        education,
+        isAdded: true,
+        user: user.uid,
+      };      
       const resumeCardDoc = await addDoc(resumeCollectionRef, {
-        ...resumeCard,
+        ...resumeCardData,
         isAdded: true,
         user: user.uid,
       });
       console.log("Resume Card Doc:", resumeCardDoc);
 
-      setResume([]); // Clear the resume state
       setResumeCard({});
-      setAddedResumeCardIds([...addedResumeCardIds, resumeCard.uid]);
+      // setAddedResumeCardIds([...addedResumeCardIds, resumeCard.uid]);
+
     } catch (error) {
       console.error(error);
       setErrMsg("Something went wrong");
     }
   };
 
-  console.log(resume);
+  const updatePersonalInfo =(e) => {
+    setPersonalInfo((prevData) => ({...prevData,  [e.target.name]: e.target.value}));
+  }
+  const updateWorkExperience =(e) => {
+    setWorkExperience((prevData) => ({...prevData,  [e.target.name]: e.target.value }));
+  }
+  const updateEducation =(e) => {
+    setEducation((prevData) => ({...prevData,  [e.target.name]: e.target.value }));
+  }
+
+
+
   console.log("resumeCard:", resumeCard);
 
   return (
     <>
-      <div>
-        <h1>Resume</h1>
+      <div className='form'>
+        <h1 className='Resume'>Resume</h1>
         <form onSubmit={submitHandler}>
-          <PersonalInfo changeHandler={changeHandler} />
-          {/* <WorkExperience changeHandler={changeHandler}/> */}
-          {/* <Education changeHandler={changeHandler}/> */}
-          <button type="submit">send form</button>
+          <PersonalInfo changeHandler={updatePersonalInfo} />
+          <WorkExperience changeHandler={updateWorkExperience}/>
+          <Education changeHandler={updateEducation}/>
+          <button className='formBtn' type="submit">send form</button>
         </form>
       </div>
     </>
