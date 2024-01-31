@@ -12,6 +12,17 @@ export default function PersonalInfo(props) {
 
     <div className='container'>
 
+    <div className='input-group'>
+            <label htmlFor="profilePicture"></label><br />
+            <input type="file" accept="image/*" id="profilePicture" name="profilePicture" onChange={(e) => changeHandler(e, 'profilePicture')} />
+            <label htmlFor="profilePicture" className="fileLabel">
+              <div className='profilePictureDiv'>
+                <img className='profilePicture' src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="" srcset="" />
+                <span className='profilePictureText'>Uplowd Profile Picture</span>
+              </div>
+              </label>
+          </div>
+
     <div className='box1'>
 
     <div className='input-group'>
@@ -36,10 +47,8 @@ export default function PersonalInfo(props) {
 
     </div>
 
-    <div className='input-group'>
-            <label htmlFor="profilePicture">Profile Picture</label><br />
-            <input type="file" accept="image/*" onChange={(e) => changeHandler(e, 'profilePicture')} />
-          </div>
+ 
+
 
     <div className='input-group'>
     <label htmlFor="About_Me">About Me</label><br />

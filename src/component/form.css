@@ -38,7 +38,7 @@
     margin: 0 auto; 
     width: 90%;
     border: 2px solid rgb(0, 112, 149);
-    height: 30rem;
+    height: 37rem;
     padding: 1%;
   }
 
@@ -105,6 +105,41 @@
     font-size: large;
   }
 
+  
+.profilePictureDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-top: 2rem;
+}
+.profilePictureDiv:hover .profilePicture {
+  border: 2px solid rgb(2, 28, 36);
+}
+
+.profilePictureDiv:hover .profilePictureText {
+  color: rgb(123, 203, 230);
+}
+
+.input-group input[type="file"] {
+  display: none;
+}
+.profilePicture{
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  
+}
+.profilePictureText{
+  font-weight: 600;
+  font-size: 20px;
+  color: black;
+  margin-left: 1rem;
+
+}
+
+
+
   /* work */
 
   .containerWork {
@@ -114,10 +149,10 @@
     justify-content: space-evenly;
     align-items: center;
     width: 90%;
-    height: 20rem;
-    margin: 0 auto; 
+    min-height: 20rem; /* Set a minimum height */
+    height: auto; /* Allow the container to grow based on content */
+    margin: 0 auto;
     padding: 1%;
-
   }
   .inputWork {
     width: 20rem;
@@ -155,10 +190,9 @@
     justify-content: space-evenly;
     align-items: center;
     width: 90%;
-    height: 20rem;
-    margin: 0 auto; 
+    min-height: 20rem; /* Set a minimum height */
+    height: auto; /* Allow the container to grow based on content */
+    margin: 0 auto;
     padding: 1%;
-    
-
   }
   
