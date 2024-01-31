@@ -37,6 +37,11 @@ export default function PersonalInfo(props) {
     </div>
 
     <div className='input-group'>
+            <label htmlFor="profilePicture">Profile Picture</label><br />
+            <input type="file" accept="image/*" onChange={(e) => changeHandler(e, 'profilePicture')} />
+          </div>
+
+    <div className='input-group'>
     <label htmlFor="About_Me">About Me</label><br />
     <input className='inputAbout' onChange={changeHandler} name='About_Me' type="text" />
     </div>

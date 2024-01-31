@@ -45,7 +45,7 @@ export default function WorkExperience(props) {
             <button type="button" onClick={() => deleteWorkplace(index)}>Delete workplace</button>
           </div>
         ))}
-        <button onClick={addWorkplace}>Add another workplace</button>
+        <button onClick={addWorkplace}>Add workplace</button>
       </div>
     </>
   );

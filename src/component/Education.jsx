@@ -45,7 +45,7 @@ export default function Education(props) {
             <button type="button" onClick={() => deleteEducation(index)}>Delete education</button>
           </div>
         ))}
-        <button onClick={addEducation}>Add another education</button>
+        <button onClick={addEducation}>Add education</button>
       </div>
     </>
   );
