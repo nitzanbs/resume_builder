@@ -1,0 +1,133 @@
+#print {
+    display: none;
+  }
+  
+  @media print {
+    #resume {
+      display: none;
+    }
+    #print {
+      display: block;
+    }
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .page {
+    box-sizing: border-box;
+    width: 21cm; /* רוחב עמוד תקני A4 */
+    height: 29.7cm; /* גובה עמוד תקני A4 */
+    margin: 1cm auto; /* מרווח פנימי ומרווח חיצוני */
+    border: 1px solid black;
+    overflow: hidden; /* מבוסס על אוברפלו של התוכן */
+  }
+  
+  .resume {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 1px solid black;
+  }
+  
+
+.leftColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    width: 30%;
+    height: 95%;
+    padding: 5%;
+    background-color: rgba(137, 206, 222, 0.582);
+}
+
+.pImg{
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin-bottom: 5rem;
+}
+
+.AboutP{
+  font-size: 15px;
+  color: #000;
+}
+
+.rightColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+    height: 99%;
+    padding: 1%;
+}
+
+.experienceContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  padding: 1%;
+  
+}
+
+.singlData{
+  width: 60%;
+  border-top: 1px solid rgb(2, 2, 78);
+
+}
+.titel{
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(8, 16, 107);
+}
+
+.textHeadLine{
+  font-size: 15px;
+
+}
+
+.text{
+  font-size: 10px;
+
+}
+
+.timeFrame{
+  font-size: 13px;
+
+}
+
+.timeAndName{
+  display: flex;
+  justify-content: space-between;
+  column-gap: 3rem;
+
+
+}
+
+@media print {
+  body {
+    visibility: visible;
+  }
+}
+
+.print-button {
+  margin-top: 20px;
+}
+
+.print-button button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -13,7 +13,6 @@ export default function Resume() {
   const [personalInfo, setPersonalInfo] = useState({});
   const [workExperiences, setWorkExperiences] = useState([]);
   const [educations, setEducations] = useState([]);
-  const [education, setEducation] = useState({});
 
   const resumeCollectionRef = collection(db, 'Resume');
 
@@ -74,9 +73,7 @@ export default function Resume() {
     setPersonalInfo((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
   };
 
-  const updateEducation = (e) => {
-    setEducation((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
-  };
+
 
   console.log('resumeCard:', resumeCard);
 

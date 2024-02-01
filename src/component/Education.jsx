@@ -13,30 +13,30 @@ export default function Education(props) {
         {educations.map((education, index) => (
           <div key={index} className='boxWork'>
             <div className='input-group'>
-              <label htmlFor={`Institution_${index}`}>Institution</label><br />
+              <label htmlFor={`Institution`}>Institution</label><br />
               <input
                 className='inputWork'
-                name={`Institution_${index}`}
+                name={`Institution`}
                 type="text"
                 onChange={(e) => changeHandler(e, index, 'education')}
               />
             </div>
 
             <div className='input-group'>
-              <label htmlFor={`Time_frame_${index}`}>Time frame</label><br />
+              <label htmlFor={`Time_frame`}>Time frame</label><br />
               <input
                 className='inputWork'
-                name={`Time_frame_${index}`}
+                name={`Time_frame`}
                 type="number"
                 onChange={(e) => changeHandler(e, index, 'education')}
               />
             </div>
 
             <div className='input-group'>
-              <label htmlFor={`Subject_${index}`}>What you learned</label><br />
+              <label htmlFor={`Subject`}>What you learned</label><br />
               <input
                 className='inputRole'
-                name={`Subject_${index}`}
+                name={`Subject`}
                 type="text"
                 onChange={(e) => changeHandler(e, index, 'education')}
               />
@@ -45,7 +45,7 @@ export default function Education(props) {
             <button type="button" onClick={() => deleteEducation(index)}>Delete education</button>
           </div>
         ))}
-        <button onClick={addEducation}>Add education</button>
+        <button type="button" onClick={addEducation}>Add education</button>
       </div>
     </>
   );
