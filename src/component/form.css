@@ -38,8 +38,8 @@
     margin: 0 auto; 
     width: 90%;
     border: 2px solid rgb(0, 112, 149);
-    height: 37rem;
-    padding: 1%;
+    height: auto;
+    padding: 3%;
   }
 
   
@@ -95,9 +95,16 @@
 
   }
 
+  .inputBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .inputAbout {
     
-    width: 60rem;
+    width: 90%;
     padding: 2%;
     box-sizing: border-box;
     border: 2px solid rgb(123, 203, 230);
@@ -164,13 +171,16 @@
   }
 
   .inputRole {
-    width: 60rem;
+    width: 90%;
     padding: 2%;
     box-sizing: border-box;
     border: 2px solid rgb(123, 203, 230);
     height: 10rem;
     font-size: large;
   }
+  
+
+
 
   .boxWork{
     display: flex;
@@ -196,3 +206,87 @@
     padding: 1%;
   }
   
+
+  /* רספונסיביות לטבלט */
+@media only screen and (max-width: 768px) {
+  .form {
+      width: 80%;
+  }
+
+  .Resume {
+      font-size: 40px;
+  }
+
+  .formBtn {
+      font-size: 20px;
+  }
+
+  .headLine {
+      font-size: 20px;
+  }
+
+  .container,
+  .containerWork,
+  .containerEducation {
+      width: 95%;
+      min-height: auto;
+      height: auto;
+  }
+
+  .inputS,
+  .input,
+  .inputP,
+  .inputAbout,
+  .inputWork,
+  .inputRole {
+      width: 100%;
+  }
+
+  .box1,
+  .boxWork {
+      flex-direction: column;
+      justify-content: center;
+      column-gap: 0;
+  }
+}
+
+/* רספונסיביות לטלפון */
+@media only screen and (max-width: 480px) {
+  .form {
+      width: 90%;
+  }
+
+  .Resume {
+      font-size: 30px;
+  }
+
+  .formBtn {
+      font-size: 18px;
+  }
+
+  .headLine {
+      font-size: 18px;
+  }
+
+  .container,
+  .containerWork,
+  .containerEducation {
+      width: 100%;
+  }
+
+  .inputS,
+  .input,
+  .inputP,
+  .inputAbout,
+  .inputWork,
+  .inputRole {
+      width: 100%;
+  }
+
+  .box1,
+  .boxWork {
+      flex-direction: column;
+      justify-content: center;
+      column-gap: 0;
+  }
+}

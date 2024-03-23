@@ -16,3 +16,8 @@
     height: 10rem;
 
 }
+
+.stars{
+    display: flex;
+    color: rgb(255, 213, 0);
+}

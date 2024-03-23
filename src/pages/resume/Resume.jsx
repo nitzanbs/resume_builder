@@ -6,6 +6,8 @@ import PersonalInfo from '../../component/PersonalInfo';
 import WorkExperience from '../../component/WorkExperience';
 import Education from '../../component/Education';
 import '../../component/Form.css';
+import Skills from '../../component/Skills';
+import Languages from '../../component/Languages';
 
 export default function Resume() {
   const { user } = useContext(UserContext);
@@ -13,6 +15,11 @@ export default function Resume() {
   const [personalInfo, setPersonalInfo] = useState({});
   const [workExperiences, setWorkExperiences] = useState([]);
   const [educations, setEducations] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [languages, setLanguages] = useState([]);
+
+
+
 
   const resumeCollectionRef = collection(db, 'Resume');
 
@@ -24,6 +31,17 @@ export default function Resume() {
       [name]: value,
     };
     type === 'education' ? setEducations(updatedData) : setWorkExperiences(updatedData);
+  };
+
+  const changeHandlerChecked = (e, index) => {
+    const updatedLanguages = [...languages];
+    const { name, value, checked } = e.target;
+    updatedLanguages[index] = {
+      ...updatedLanguages[index],
+      [name]: value,
+      isNative: checked  
+    };
+    setLanguages(updatedLanguages);
   };
 
   const addEducation = () => {
@@ -46,6 +64,29 @@ export default function Resume() {
     setWorkExperiences(updatedWorkExperiences);
   };
 
+  const addSkill = () => {
+    setSkills([...skills, '']);
+  };
+
+  const deleteSkill = (index) => {
+    const updatedSkills = [...skills];
+    updatedSkills.splice(index, 1);
+    setSkills(updatedSkills);
+  };
+
+  
+  const addLanguage = () => {
+    setLanguages([...languages, '']);
+  };
+
+  const deleteLanguage = (index) => {
+    const updatedLanguage = [...languages];
+    updatedLanguage.splice(index, 1);
+    setLanguages(updatedLanguage);
+  };
+
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -53,6 +94,8 @@ export default function Resume() {
         personalInfo,
         workExperiences,
         educations,
+        skills,
+        languages,  
         isAdded: true,
         user: user.uid,
       };
@@ -62,7 +105,7 @@ export default function Resume() {
         user: user.uid,
       });
       console.log('Resume Card Doc:', resumeCardDoc);
-
+  
       setResumeCard({});
     } catch (error) {
       console.error(error);
@@ -94,6 +137,19 @@ export default function Resume() {
             changeHandler={changeHandler}
             addEducation={addEducation}
             deleteEducation={deleteEducation}
+          />
+          <Skills
+            skills={skills}
+            changeHandler={changeHandler}
+            addSkill={addSkill}
+            deleteSkill={deleteSkill}
+          />
+          <Languages
+            languages={languages}
+            changeHandler={changeHandler}
+            addLanguage={addLanguage}
+            deleteLanguage={deleteLanguage}
+            changeHandlerChecked={changeHandlerChecked}
           />
           <button className='formBtn' type='submit'>
             send form

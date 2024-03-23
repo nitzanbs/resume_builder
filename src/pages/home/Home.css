@@ -10,6 +10,11 @@
     margin-right: 7rem;
 }
 
+.mainH1{
+    font-size: 80px;
+    font-weight: 800;
+}
+
 .homeImg{
     width: 40rem;
     height: 30rem;
@@ -59,3 +64,103 @@
     height: 10rem;
  
  }
+
+ /* רספונסיביות לטבלט */
+@media only screen and (max-width: 768px) {
+    .row1, .row2, .row3, .row4 {
+        height: auto;
+        flex-direction: column;
+        padding: 5%;
+
+    }
+
+    .boxRow2{
+        flex-direction: column;
+
+    
+    }
+    .imgBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .box{
+        flex-direction: column;
+        width: 95%;
+        row-gap: 4rem;
+
+    }
+
+    .tCard{
+        width: 80% !important;
+        align-items: center;
+
+    }
+    .pT{
+        font-size: 1.5rem;
+    }
+
+    .hT{
+        font-size: 2rem;
+    }
+
+    .homeImg {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+    }
+
+    .homeHeadLine {
+        margin-right: 0;
+        text-align: center;
+    }
+}
+
+/* רספונסיביות לטלפון */
+@media only screen and (max-width: 480px) {
+    .row1, .row2, .row3, .row4 {
+        height: auto;
+        flex-direction: column;
+        padding: 5%;
+
+    }
+
+    .boxRow2{
+        flex-direction: column;
+
+    
+    }
+
+    .imgBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box{
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .tCard{
+        width: 100% !important;
+        align-items: center;
+    }
+
+    .pT{
+        font-size: 1rem;
+    }
+
+    .hT{
+        font-size: 1.5rem;
+    }
+
+    .homeHeadLine {
+        font-size: 24px;
+    }
+
+    .img {
+        width: 7rem;
+        height: 7rem;
+    }
+}

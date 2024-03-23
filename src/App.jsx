@@ -11,6 +11,7 @@ import NotFound  from './pages/NotFound'
 import Home from './pages/home/Home'
 import Resume from './pages/resume/Resume'
 import MyResume from './pages/myResume/MyResume';
+import SingleResume from './component/SingleResume';
 
 
 
@@ -63,6 +64,8 @@ function App() {
               }
             />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path={`/single-resume/:resumeId`} element={<SingleResume />} />
+
 
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -108,7 +111,9 @@ function App() {
 
                 />
               }
-            />
+            />         
+            <Route path={`/single-resume/:resumeId`} element={<SingleResume />} />
+
             
             <Route path="*" element={<NotFound />} />
           </Routes>

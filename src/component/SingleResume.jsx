@@ -1,61 +1,58 @@
-import React, { useContext, useState, useEffect } from 'react';
-// import html2pdf from 'html2pdf.js';
-import { UserContext } from '../../context/UserProvider';
-import { getDocs, collection, query, where } from "firebase/firestore";
-import { db } from '../../config/Config';
-import { Link, useParams } from 'react-router-dom';
-
-import './MyResume.css';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { db } from '../config/Config'
+import { collection, doc, getDoc } from "firebase/firestore";
+import html2pdf from 'html2pdf.js';
 
 
 const resumeCollectionRef = collection(db, 'Resume');
 
+export default function SingleResume() {
+    const { resumeId } = useParams();
+    const [resume, setResume] = useState([]);
 
-
-export default function MyResume() {
-  const [resume, setResume] = useState([]);
-  const { user } = useContext(UserContext);
-
-  const getResume = async () => {
-    try {
-      if (!user) {
-        return;
-      }
-      const q = query(resumeCollectionRef, where("user", "==", user.uid));
-      const rowDocs = await getDocs(q);
-      const docs = rowDocs.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
-      setResume(docs);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getResume();
-  }, [user]);
-
-  // const downloadPDF = () => {
-  //   const element = document.getElementById('resume');
-  //   html2pdf(element);
-  // };
+    useEffect(() => {
+      const fetchResume = async () => {
+          try {
+              const resumeDoc = await getDoc(doc(resumeCollectionRef, resumeId));
+              if (resumeDoc.exists()) {
+                  console.log("Resume data:", resumeDoc.data()); // Check the data you're receiving
+                  setResume([resumeDoc.data()]);
+              } else {
+                  console.log("No such document!");
+              }
+          } catch (error) {
+              console.error("Error fetching document: ", error);
+          }
+      };
   
-  
+      fetchResume();
+  }, [resumeId]);
+
+  const downloadPDF = () => {
+    const element = document.getElementById('resume');
+    const opt = {
+      margin: [0, 0]
+        // margin: 0.5,
+        // filename: 'resume.pdf',
+        // image: { type: 'jpeg', quality: 0.98 },
+        // html2canvas: { scale: 2 },
+        // jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().from(element).set(opt).save();
+};
 
   
-  
 
-  return (
-    <>
-      <h1>My Resume</h1>
+    return (
+        <>
 
-      {resume.map((item, i) => (
+      {resume? (resume.map((item, i) => (
         <div >
         <div id={'resume_' + i}  key={i} className='page'>
           <div id='resume' className="resume">
             <div className='leftColumn'>
-              <img className='pImg' 
-              // src={image} 
-              alt="Profile" />
+              {/* <img className='pImg' src={item.personalInfo && item.personalInfo.profilePicture ? item.personalInfo.profilePicture : ''} alt="Profile" /> */}
               <img className='pImg' src="https://cdn.pixabay.com/photo/2023/12/29/17/37/monstera-8476616_640.jpg" alt="" />
               <h2 className='AboutP'>{item.personalInfo.About_Me}</h2>
               <div>
@@ -125,11 +122,17 @@ export default function MyResume() {
           </div>
 
           <div className="print-button">
-            {/* <button onClick={downloadPDF}>Download PDF</button> */}
-            <Link to={`/single-resume/${item.uid}`}>View Resume</Link>
+            <button 
+            onClick={downloadPDF}
+            >Download PDF</button>
+            <button onclick="window.print()">הדפס</button>
+
           </div>
         </div>
-      ))}
+      ))
+      ) : (
+        <p>Loading...</p>
+    )}
     </>
-  );
+    );
 }

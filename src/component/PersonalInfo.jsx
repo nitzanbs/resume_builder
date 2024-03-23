@@ -3,6 +3,33 @@ import React from 'react'
 export default function PersonalInfo(props) {
   const {changeHandler} = props
 
+  const preset_key = "ml_default";
+  const cloud_name = "djmlunvsl";
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    !formData.append("upload_preset", preset_key);
+
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const apiUrl = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+
+    fetch(apiUrl, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.secure_url) {
+          setImage(data.secure_url);
+        } else {
+          console.error("Error uploading image to Cloudinary");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
 
   return (
     <>
@@ -17,8 +44,8 @@ export default function PersonalInfo(props) {
             <input type="file" accept="image/*" id="profilePicture" name="profilePicture" onChange={(e) => changeHandler(e, 'profilePicture')} />
             <label htmlFor="profilePicture" className="fileLabel">
               <div className='profilePictureDiv'>
-                <img className='profilePicture' src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="" srcset="" />
-                <span className='profilePictureText'>Uplowd Profile Picture</span>
+                <img className='profilePicture addPostImageTitle' src="images\Add post.png" alt="" srcset="" />
+                <span className='profilePictureText'>Uploud Profile Picture</span>
               </div>
               </label>
           </div>
@@ -50,9 +77,12 @@ export default function PersonalInfo(props) {
  
 
 
-    <div className='input-group'>
+    <div className='inputBox' >
     <label htmlFor="About_Me">About Me</label><br />
-    <input className='inputAbout' onChange={changeHandler} name='About_Me' type="text" />
+    <textarea className='inputAbout' 
+    onChange={changeHandler} 
+    name='About_Me' 
+    type="text" cols={5} />
     </div>
 
     </div>

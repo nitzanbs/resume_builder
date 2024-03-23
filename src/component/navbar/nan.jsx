@@ -1,7 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import './Navbar.css'
-import { getAuth, signOut } from 'firebase/auth';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserProvider';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,17 +13,14 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import './NavbarCss.css'
 
-
-
-function Navbar() {
-  const auth = getAuth();
+export default function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const pages = ['home', 'Resume','MyResume', 'logIn', 'signUp'];
-  
+  const pages = ['home', 'createQuiz','play', 'logIn', 'signUp'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,7 +37,6 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
 
   return (
     <>
@@ -149,5 +143,3 @@ function Navbar() {
     </>
   );
 }
-
-export default Navbar;
