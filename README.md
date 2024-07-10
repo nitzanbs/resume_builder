@@ -20,7 +20,7 @@ This project is a web application that helps users create a professional resume.
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/nitzanbs/resume-builder.git
+    git clone https://github.com/nitzanbs/resume_builder.git
     ```
 
 2. **Navigate to the project directory:**
