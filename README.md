@@ -14,7 +14,6 @@ This project is a web application that helps users create a professional resume.
 
 - **Frontend**: React, Material-UI
 - **Backend**: Firebase Firestore
-- **Deployment**: (Specify deployment platform if any)
 
 ## Setup and Installation
 
