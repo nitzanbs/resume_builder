@@ -18,8 +18,8 @@ export default function Skills(props) {
           <input
             className='inputWork'
             type="text"
-            name={skill}
-            onChange={(e) => changeHandler(e, index)}
+            name={`skill_${index}`}
+            onChange={(e) => changeHandler(e, index,`skill_${index}`)}
           />
           </div>
           <button onClick={() => deleteSkill(index)}>Delete Skill</button>

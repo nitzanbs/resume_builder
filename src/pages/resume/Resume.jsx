@@ -8,6 +8,7 @@ import Education from '../../component/Education';
 import '../../component/Form.css';
 import Skills from '../../component/Skills';
 import Languages from '../../component/Languages';
+import "../../component/Form.css"
 
 export default function Resume() {
   const { user } = useContext(UserContext);
@@ -122,6 +123,7 @@ export default function Resume() {
 
   return (
     <>
+    <div className='page1'>
       <div className='form'>
         <h1 className='Resume'>Resume</h1>
         <form onSubmit={submitHandler}>
@@ -151,10 +153,13 @@ export default function Resume() {
             deleteLanguage={deleteLanguage}
             changeHandlerChecked={changeHandlerChecked}
           />
+          <div className='btnDiv'>
           <button className='formBtn' type='submit'>
             send form
           </button>
+          </div>
         </form>
+      </div>
       </div>
     </>
   );

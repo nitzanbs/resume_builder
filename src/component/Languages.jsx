@@ -15,9 +15,8 @@ export default function Languages(props) {
               <input
                 className='inputWork'
                 type="text"
-                name={language.name}
-                value={language.name}
-                onChange={(e) => changeHandler(e, index)}
+                name={`language_${index}`}
+                onChange={(e) => changeHandler(e, index,`language_${index}`)}
               />
               <label>
                 <input

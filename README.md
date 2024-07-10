@@ -21,7 +21,7 @@ This project is a web application that helps users create a professional resume.
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/resume-builder.git
+    git clone https://github.com/nitzanbs/resume-builder.git
     ```
 
 2. **Navigate to the project directory:**
@@ -82,9 +82,9 @@ This project is a web application that helps users create a professional resume.
 
 ## Screenshots
 
-![Home Page](screenshots/home.png)
-![Resume Form](screenshots/form.png)
+![Home Page](src\pic\home.png)
+![Resume Form](src\pic\form.png)
 
 ## Contact
 
-For any questions or feedback, please contact me at [your-email@example.com](mailto:your-email@example.com).
+For any questions or feedback, please contact me at [nitzanbs2248@gmail.com](mailto:nitzanbs2248@gmail.com).
